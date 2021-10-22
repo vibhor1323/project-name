@@ -1,0 +1,132 @@
+<div class="h-100">
+    <div class="head" style="display: flex;">
+        <div class="userno">
+            8090973014
+        </div>
+        <div class="" style="cursor: pointer;"> Logout</div>
+    </div>
+</div>
+<div class="justify-content-around" style="display: flex;">
+    <div class="col-7 heading2">
+        <p>Items</p>
+    </div>
+    <div class="col-5 heading2-1">
+        <p>Create/Edit items</p>
+    </div>
+</div>
+<div class="d-flex heading1">
+    <div class="col-7 item-content">
+        <div class="d-flex">
+         <input 
+            type="input"
+            class="search-1"
+            placeholder="Search"
+         />
+        </div>
+        <div class="d-flex flex-column">
+            <table class="tableDesign table-scroll">
+            
+                    <thead>
+                        <tr class="content-bar justify-content-around">
+                            <th>ITEM NAME</th>
+                            <th>ITEM CODE</th>
+                            <th>SELLING PRICE</th>
+                            <th>PURCHASE PRICE</th>
+                            <th>UNIT</th>
+                            <th>DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+            
+             </table>
+        </div>
+    </div>
+    <form class="col-5 form-content">
+        <div class="d-flex">
+            <div class="lf-col col-6">
+                <div class="form-heading">
+                    Item Name*
+                </div>
+                <input type="text"
+                    name="itemName"
+                    placeholder="Enter Item Name"
+                    required
+                />
+
+            </div>
+            <div class="rt-col col-6">
+                <div class="form-heading">
+                    Item Code
+                </div>
+                <input type="text"
+                    placeholder="Enter item Code"
+                    name="itemCode"
+                    required
+                />
+
+            </div>
+
+        </div>
+        <div class="optional">
+            Stock & Pricing details (Optional)
+        </div>
+        <div class="d-flex">
+            <div class="lf-col col-6">
+                <div class="form-heading">
+                    Sales Price
+                </div>
+                <input type="number"
+                    placeholder="₹0"
+                    name="sellingPrice"
+
+                />
+
+            </div>
+            <div class="rt-col col-6">
+                <div class="form-heading">
+                    Purchase Price
+                </div>
+                <input type="text"
+                    placeholder="₹0"
+                    name="purchasePrice"
+                />
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="lf-col col-6">
+                <div class="form-heading">
+                    Measuring Unit
+                </div>
+                <select name="units" id="units" aria-placeholder="Select Unit">
+                    <option value="">Select Units</option>
+                    <option value="pcs">pcs</option>
+                    <option value="boxes">boxes</option>
+                    <option value="gms">gms</option>
+                    <option value="kgs">kgs</option>
+                    <option value="ltr">ltr</option>
+                </select>
+
+            </div>
+            <div class="rt-col col-6">
+                <div class="form-heading">
+                    Opening Stock Date
+                </div>
+                <input type="date"
+                    placeholder="₹0"
+                    name="purchasePrice"
+                />
+            </div>
+        </div>
+        <input
+            class="btn btn-primary "
+            type="submit"
+            style="color: white;width: 95%;"
+            value="Create"
+            
+          />
+
+    </form>
+
+</div>
