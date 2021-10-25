@@ -12,36 +12,58 @@
                 <p class="pt-3" style="font-size: 20px; color: grey; font-weight: bold;">Atma Nirbhar Vyapaari Bane</p>
             </div>
             <div class="col-4">
-                <form class=" form p-5">
+                <form class=" form p-5" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
                     <div class="form-title mb-4">
                         Login to myBillBook?
                     </div>
                     <div class="heading"> Enter Mobile Number</div>
-                    <div class="phoneInput  mb-4" style="display: flex;">
-                        <div class="input-pre">+91</div>
-                        <input 
-                        type="tel" 
-                        class="input-check"
-                        placeholder="9897798766"
-                        name="phoneNumber"
-                        required/>
-                    </div>
-                    <div>
+                        <div class="phoneInput  mb-4" style="display: flex;">
+                            <div class="input-pre">+91</div>
+                            <input 
+                                type="text" 
+                                class="input-check"
+                                placeholder="9897798766"
+                                name="phoneNumber"
+                                ngModel
+                                required
+                            >
+                        </div>
+                    <div *ngIf="isOtp">
                         <div class="heading">Enter OTP</div>
                         <input
-                      placeholder="One Time Password"
-                      name="otp"
-                    
-                      required
-                    />
+                            placeholder="One Time Password"
+                            name="otp"
+                            ngModel
+                            type="text"
+                            required
+                        />
+                        <input
+                            type="submit"
+                            class="btn btn-primary w-100 mt-4"
+                            style="color: white;"
+                            
+                            value="Login"
+                        
+                        />
+                        <!-- <div class="heading mt-1">
+                            Resend OTP{" "}
+                              <span className="otpClick" onClick={handleOtp}>
+                                Click here
+                              </span>
+                              <span id="otpTimer"></span>
+                            
+                        </div> -->
+                       
                     </div>
                 
-                <input
-                  type="submit"
-                  class="btn btn-primary w-100 mt-4"
-                  style="color: white;"
-                  value="Login"
-                />
+                    <input
+                        *ngIf="!isOtp"  
+                        type="submit"
+                        class="btn btn-primary w-100 mt-4"
+                        style="color: white;"
+                        value="Get OTP"
+                        
+                    />
               
 
 

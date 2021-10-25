@@ -1,9 +1,9 @@
 <div class="h-100">
     <div class="head" style="display: flex;">
         <div class="userno">
-            8090973014
+            {{ph_number}}
         </div>
-        <div class="" style="cursor: pointer;"> Logout</div>
+        <div class="" style="cursor: pointer;" (click)="logout()"> Logout</div>
     </div>
 </div>
 <div class="justify-content-around" style="display: flex;">
@@ -52,6 +52,7 @@
                 <input type="text"
                     name="itemName"
                     placeholder="Enter Item Name"
+                    ngModel
                     required
                 />
 
@@ -63,6 +64,7 @@
                 <input type="text"
                     placeholder="Enter item Code"
                     name="itemCode"
+                    ngModel
                     required
                 />
 
@@ -80,6 +82,7 @@
                 <input type="number"
                     placeholder="₹0"
                     name="sellingPrice"
+                    ngModel
 
                 />
 
@@ -91,6 +94,7 @@
                 <input type="text"
                     placeholder="₹0"
                     name="purchasePrice"
+                    ngModel
                 />
             </div>
         </div>
@@ -116,6 +120,7 @@
                 <input type="date"
                     placeholder="₹0"
                     name="purchasePrice"
+                    
                 />
             </div>
         </div>
