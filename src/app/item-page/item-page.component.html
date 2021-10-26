@@ -30,7 +30,7 @@
             
                     <thead>
                         <tr class="content-bar justify-content-around">
-                            <th  >ITEM NAME&nbsp;<i class="fa fa-sort" ></i></th>
+                            <th (click)="sort('itemname')">ITEM NAME&nbsp;<i class="fa fa-sort" ></i></th>
                             <th>ITEM CODE</th>
                             <th>SELLING PRICE</th>
                             <th>PURCHASE PRICE</th>
@@ -66,7 +66,7 @@
                     name="itemName"
                     placeholder="Enter Item Name"
                     [(ngModel)]="itemN"
-                    (ngModelChange)="onChange($event,'itemName')"
+                    (ngModelChange)="onChange($event,'itemname')"
                     
 
                     required
@@ -83,6 +83,7 @@
                     name="itemCode"
                     
                     [(ngModel)]="itemC"
+                    (ngModelChange)="onChange($event,'itemcode')"
                     required
                     
                 />
@@ -102,6 +103,7 @@
                     placeholder="₹0"
                     name="sellingPrice"
                     [(ngModel)]="sellingPricE"
+                    (ngModelChange)="onChange($event,'sellingprice')"
 
                 />
 
@@ -114,6 +116,7 @@
                     placeholder="₹0"
                     name="purchasePrice"
                     [(ngModel)]="purchasePricE"
+                    (ngModelChange)="onChange($event,'purchaseprice')"
                 
                 />
             </div>
@@ -123,7 +126,7 @@
                 <div class="form-heading">
                     Measuring Unit
                 </div>
-                <select name="unit" id="units" aria-placeholder="Select Unit" [(ngModel)]="unitS">
+                <select name="unit" id="units" aria-placeholder="Select Unit" [(ngModel)]="unitS" (ngModelChange)="onChange($event,'units')">
                     <option value="">Select Units</option>
                     <option value="pcs">pcs</option>
                     <option value="boxes">boxes</option>
@@ -141,6 +144,7 @@
                     placeholder=""
                     name="Date"
                     [(ngModel)]="datE"
+                    (ngModelChange)="onChange($event,'date')"
                     
                 />
             </div>
