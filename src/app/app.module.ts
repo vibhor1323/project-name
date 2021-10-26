@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './shared/alert/alert.component';
+import { OrderByPipe } from './order-by.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
-    HeaderComponent
+    HeaderComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

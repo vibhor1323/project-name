@@ -54,6 +54,7 @@ export class LandingPageAuthService{
     logout(){
         this.router.navigate(['']);
         localStorage.removeItem('UserDetails');
+        localStorage.removeItem('items');
 
     }
     

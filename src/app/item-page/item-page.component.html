@@ -20,6 +20,8 @@
          <input 
             type="input"
             class="search-1"
+            [ngModel]="searchElement"
+            (ngModelChange)="searchItem($event)"
             placeholder="Search"
          />
         </div>
@@ -28,7 +30,7 @@
             
                     <thead>
                         <tr class="content-bar justify-content-around">
-                            <th>ITEM NAME</th>
+                            <th  >ITEM NAME&nbsp;<i class="fa fa-sort" ></i></th>
                             <th>ITEM CODE</th>
                             <th>SELLING PRICE</th>
                             <th>PURCHASE PRICE</th>
@@ -37,13 +39,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
+                        
+                        <tr class=" content-bar1  justify-content-around " *ngFor="let d of oldItem ;let itemIndex = index" (click)="updateRow(itemIndex)" >
+                            <td>{{d.itemname}}</td>
+                            <td>{{d.itemcode}}</td>
+                            <td>{{d.sellingprice}}</td>
+                            <td>{{d.purchaseprice}}</td>
+                            <td>{{d.units}} </td>
+                            <td>{{d.date}}</td>
+                            
+
+                        </tr>
+                  
                     </tbody>
             
              </table>
         </div>
     </div>
-    <form class="col-5 form-content">
+    <form class="col-5 form-content" #itemForm="ngForm" (ngSubmit)="selectedItem === null||selectedItem===undefined ? handleSubmit(itemForm):handleUpdate(itemForm) ">
         <div class="d-flex">
             <div class="lf-col col-6">
                 <div class="form-heading">
@@ -52,8 +65,12 @@
                 <input type="text"
                     name="itemName"
                     placeholder="Enter Item Name"
-                    ngModel
+                    [(ngModel)]="itemN"
+                    (ngModelChange)="onChange($event,'itemName')"
+                    
+
                     required
+                   
                 />
 
             </div>
@@ -64,8 +81,10 @@
                 <input type="text"
                     placeholder="Enter item Code"
                     name="itemCode"
-                    ngModel
+                    
+                    [(ngModel)]="itemC"
                     required
+                    
                 />
 
             </div>
@@ -82,7 +101,7 @@
                 <input type="number"
                     placeholder="₹0"
                     name="sellingPrice"
-                    ngModel
+                    [(ngModel)]="sellingPricE"
 
                 />
 
@@ -94,7 +113,8 @@
                 <input type="text"
                     placeholder="₹0"
                     name="purchasePrice"
-                    ngModel
+                    [(ngModel)]="purchasePricE"
+                
                 />
             </div>
         </div>
@@ -103,7 +123,7 @@
                 <div class="form-heading">
                     Measuring Unit
                 </div>
-                <select name="units" id="units" aria-placeholder="Select Unit">
+                <select name="unit" id="units" aria-placeholder="Select Unit" [(ngModel)]="unitS">
                     <option value="">Select Units</option>
                     <option value="pcs">pcs</option>
                     <option value="boxes">boxes</option>
@@ -118,8 +138,9 @@
                     Opening Stock Date
                 </div>
                 <input type="date"
-                    placeholder="₹0"
-                    name="purchasePrice"
+                    placeholder=""
+                    name="Date"
+                    [(ngModel)]="datE"
                     
                 />
             </div>
@@ -129,6 +150,7 @@
             type="submit"
             style="color: white;width: 95%;"
             value="Create"
+            [disabled]="!itemForm.valid"
             
           />
 
