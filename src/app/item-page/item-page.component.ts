@@ -24,6 +24,7 @@ export class ItemPageComponent implements OnInit {
   event!: Event;
   searchElement: any;
   reverse: boolean = false;
+  isDeleted: boolean = false;
 
   localItems = JSON.parse(localStorage.getItem('items')!);
 
@@ -39,6 +40,7 @@ export class ItemPageComponent implements OnInit {
     // console.log(userData.mobile_number)
     this.ph_number = userData.mobile_number;
     this.selectedItem = null;
+    this.oldItem = JSON.parse(localStorage.getItem('items')!);
   }
 
   searchItem(value: any) {
@@ -113,13 +115,14 @@ export class ItemPageComponent implements OnInit {
   handleUpdate(form: NgForm) {
     // console.log(this.localItems[this.selectedItem])
 
-    console.log(this.localItems[this.selectedItem]);
+    // console.log(this.localItems[this.selectedItem]);
 
     if (
       (form.value.itemName != null || form.value.itemName != undefined) &&
       (form.value.itemCode != null || form.value.itemCode != undefined)
     ) {
-      console.log(this.localItems[this.selectedItem]);
+      // console.log(this.localItems[this.selectedItem]);
+
       this.localItems[this.selectedItem].itemname = form.value.itemName!;
       this.localItems[this.selectedItem].itemcode = form.value.itemCode!;
       this.localItems[this.selectedItem].sellingprice = form.value.sellingPrice;
@@ -130,10 +133,10 @@ export class ItemPageComponent implements OnInit {
 
       localStorage.setItem('items', JSON.stringify(this.localItems));
       this.oldItem = this.localItems;
-      this.selectedItem = null;
-      this.selectedItemData = {};
-      form.reset();
     }
+    this.selectedItem = null;
+    this.selectedItemData = {};
+    form.reset();
   }
 
   sort(key: string) {
@@ -151,6 +154,21 @@ export class ItemPageComponent implements OnInit {
         return a1 < b1 ? -1 : a1 > b1 ? 1 : 0;
       });
     }
+  }
+
+  deleteItem(i: any) {
+    // console.log(this.oldItem.splice(i, 1));
+    this.itemN = null;
+    this.itemC = null;
+    this.sellingPricE = null;
+    this.purchasePricE = null;
+    this.unitS = null;
+    this.datE = null;
+    this.oldItem.splice(i, 1);
+    localStorage.setItem('items', JSON.stringify(this.oldItem));
+    this.selectedItem = null;
+    this.selectedItemData = {};
+    // console.log(this.oldItem);
   }
 
   logout() {

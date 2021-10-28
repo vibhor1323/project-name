@@ -24,6 +24,8 @@
             (ngModelChange)="searchItem($event)"
             placeholder="Search"
          />
+         
+         
         </div>
         <div class="d-flex flex-column">
             <table class="tableDesign table-scroll">
@@ -36,6 +38,7 @@
                             <th>PURCHASE PRICE</th>
                             <th>UNIT</th>
                             <th>DATE</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +50,15 @@
                             <td>{{d.purchaseprice}}</td>
                             <td>{{d.units}} </td>
                             <td>{{d.date}}</td>
-                            
+                            <input
+                                class="btn btn-danger "
+                                type="submit"
+                                (click)="deleteItem(itemIndex)"
+                                *ngIf="selectedItem!=null"
+                                style="color: white;width: 10%;"
+                                value="x"
+            
+                            />
 
                         </tr>
                   
@@ -56,7 +67,7 @@
              </table>
         </div>
     </div>
-    <form class="col-5 form-content" #itemForm="ngForm" (ngSubmit)="selectedItem === null||selectedItem===undefined ? handleSubmit(itemForm):handleUpdate(itemForm) ">
+    <form class="col-5 form-content" #itemForm="ngForm" (ngSubmit)="selectedItem === null||selectedItem===undefined ? handleSubmit(itemForm):handleSubmit(itemForm) ">
         <div class="d-flex">
             <div class="lf-col col-6">
                 <div class="form-heading">
@@ -151,12 +162,24 @@
         </div>
         <input
             class="btn btn-primary "
+            *ngIf="selectedItem==null||selectedItem==undefined"
             type="submit"
             style="color: white;width: 95%;"
             value="Create"
             [disabled]="!itemForm.valid"
             
           />
+          <input
+            class="btn btn-primary "
+            type="submit"
+            *ngIf="selectedItem!=null"
+            style="color: white;width: 95%;"
+            value="Update"
+            [disabled]="!itemForm.valid"
+            
+          />
+          
+          
 
     </form>
 
